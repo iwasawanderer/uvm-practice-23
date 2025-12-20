@@ -1,0 +1,5 @@
+- op: LOAD_CONST
+  value: 73
+- op: READ_MEM
+- op: WRITE_MEM
+- op: LE
