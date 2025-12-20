@@ -83,19 +83,47 @@ def print_ir(ir):
         else:
             print(f"{idx}: op={ins.op} A={ins.A} B={ins.B}")
 
+def encode(ir):
+    """
+    Encode IR into machine code bytes (variant 23)
+    """
+    code = bytearray()
+
+    for ins in ir:
+        if ins.op == "LOAD_CONST":
+            # 2 bytes, little-endian
+            word = ins.A | (ins.B << 6)
+            code.append(word & 0xFF)
+            code.append((word >> 8) & 0xFF)
+        else:
+            # 1 byte
+            code.append(ins.A & 0xFF)
+
+    return code
 
 def main() -> int:
     args = parse_args()
+
+    # загрузка и разбор YAML
     program = load_yaml(args.src)
     ir = build_ir(program)
 
+    # печать IR в test-режиме
     if args.test:
         print_ir(ir)
 
-    # Stage 1: create output file (binary content added in Stage 2)
+    # кодирование в машинные байты
+    code = encode(ir)
+
+    # вывод байтов и количества команд в test-режиме
+    if args.test:
+        print("Байты:", ", ".join(f"0x{b:02X}" for b in code))
+        print(f"Количество команд: {len(ir)}")
+
+    # запись бинарного файла
     try:
         with open(args.out, "wb") as f:
-            f.write(b"")
+            f.write(code)
     except Exception as e:
         print(f"ERROR: cannot write output file: {e}", file=sys.stderr)
         return 2
