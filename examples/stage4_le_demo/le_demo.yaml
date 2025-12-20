@@ -1,0 +1,17 @@
+# mem[50] = (10 <= 20) -> 1
+- op: LOAD_CONST
+  value: 50
+- op: LOAD_CONST
+  value: 10
+- op: LOAD_CONST
+  value: 20
+- op: LE
+
+# mem[51] = (20 <= 10) -> 0
+- op: LOAD_CONST
+  value: 51
+- op: LOAD_CONST
+  value: 20
+- op: LOAD_CONST
+  value: 10
+- op: LE

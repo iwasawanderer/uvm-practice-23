@@ -135,9 +135,18 @@ class VM:
             return
 
         if ins.op == "LE":
-            # На этапе 3 выполнение LE НЕ требуется.
-            # Мы специально падаем, чтобы не было “тихих” ошибок.
-            raise RuntimeError("LE is not implemented in stage 3 (will be stage 4)")
+            # Семантика для варианта 23:
+            # адрес берём со стека, затем два операнда; записываем 1/0 в память по адресу
+            # Стек (снизу -> вверх): ... [addr, left, right]
+            right = self.pop()
+            left = self.pop()
+            addr = self.pop()
+
+            if addr < 0 or addr >= len(self.data_memory):
+                raise RuntimeError(f"LE: address out of range: {addr}")
+
+            self.data_memory[addr] = 1 if left <= right else 0
+            return
 
         raise RuntimeError(f"Unknown IR op: {ins.op}")
 
