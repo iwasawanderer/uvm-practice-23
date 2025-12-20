@@ -1,0 +1,59 @@
+# Инициализация src[100..103] значениями: 10, 20, 30, 40
+
+- op: LOAD_CONST
+  value: 100
+- op: LOAD_CONST
+  value: 10
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 101
+- op: LOAD_CONST
+  value: 20
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 102
+- op: LOAD_CONST
+  value: 30
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 103
+- op: LOAD_CONST
+  value: 40
+- op: WRITE_MEM
+
+# Копирование src -> dst (addr/value порядок под наш WRITE_MEM: [addr, value])
+
+# dst[200] = src[100]
+- op: LOAD_CONST
+  value: 200
+- op: LOAD_CONST
+  value: 100
+- op: READ_MEM
+- op: WRITE_MEM
+
+# dst[201] = src[101]
+- op: LOAD_CONST
+  value: 201
+- op: LOAD_CONST
+  value: 101
+- op: READ_MEM
+- op: WRITE_MEM
+
+# dst[202] = src[102]
+- op: LOAD_CONST
+  value: 202
+- op: LOAD_CONST
+  value: 102
+- op: READ_MEM
+- op: WRITE_MEM
+
+# dst[203] = src[103]
+- op: LOAD_CONST
+  value: 203
+- op: LOAD_CONST
+  value: 103
+- op: READ_MEM
+- op: WRITE_MEM
