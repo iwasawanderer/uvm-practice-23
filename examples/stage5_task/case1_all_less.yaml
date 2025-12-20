@@ -1,0 +1,108 @@
+# Вектор 100..106: все <= 233
+# Исходные значения: 1, 10, 50, 100, 200, 233, 0
+
+- op: LOAD_CONST
+  value: 100
+- op: LOAD_CONST
+  value: 1
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 101
+- op: LOAD_CONST
+  value: 10
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 102
+- op: LOAD_CONST
+  value: 50
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 103
+- op: LOAD_CONST
+  value: 100
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 104
+- op: LOAD_CONST
+  value: 200
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 105
+- op: LOAD_CONST
+  value: 233
+- op: WRITE_MEM
+
+- op: LOAD_CONST
+  value: 106
+- op: LOAD_CONST
+  value: 0
+- op: WRITE_MEM
+
+# Преобразование: mem[i] = (mem[i] <= 233)
+- op: LOAD_CONST
+  value: 100
+- op: LOAD_CONST
+  value: 100
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 101
+- op: LOAD_CONST
+  value: 101
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 102
+- op: LOAD_CONST
+  value: 102
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 103
+- op: LOAD_CONST
+  value: 103
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 104
+- op: LOAD_CONST
+  value: 104
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 105
+- op: LOAD_CONST
+  value: 105
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
+
+- op: LOAD_CONST
+  value: 106
+- op: LOAD_CONST
+  value: 106
+- op: READ_MEM
+- op: LOAD_CONST
+  value: 233
+- op: LE
